@@ -15,6 +15,7 @@ import android.widget.EditText;
 public class ClearEditText extends EditText implements OnFocusChangeListener,
 		TextWatcher {
 
+	/** 右侧删除按钮 */
 	private Drawable clearDrawable;
 
 	public ClearEditText(Context context) {
@@ -43,8 +44,14 @@ public class ClearEditText extends EditText implements OnFocusChangeListener,
 		addTextChangedListener(this);
 	}
 
+	/**
+	 * 设置右侧删除按钮显示或隐藏
+	 * 
+	 * @param visible
+	 */
 	private void setClearIconVisible(boolean visible) {
 		Drawable right = visible ? clearDrawable : null;
+		// 刷新view
 		setCompoundDrawables(getCompoundDrawables()[0],
 				getCompoundDrawables()[1], right, getCompoundDrawables()[3]);
 
@@ -54,6 +61,7 @@ public class ClearEditText extends EditText implements OnFocusChangeListener,
 	public boolean onTouchEvent(MotionEvent event) {
 		if (getCompoundDrawables()[2] != null) {
 			if (event.getAction() == MotionEvent.ACTION_UP) {
+				// 判断点击的位置是否是删除按钮
 				boolean touchable = ((event.getX() > (getWidth()
 						- getPaddingRight() - clearDrawable.getIntrinsicWidth())) && (event
 						.getX() < (getWidth() - getPaddingRight())));
