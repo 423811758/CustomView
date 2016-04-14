@@ -10,4 +10,10 @@
         android:layout_height="wrap_content"
         android:text="下拉刷新" />
 
+    <Button
+        android:id="@+id/swipe_del_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="滑动删除" />
+
 </LinearLayout>
